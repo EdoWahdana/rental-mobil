@@ -177,16 +177,13 @@ foreach($results as $result)
 <!-- /Testimonial--> 
 
 <!--Footer -->
+<script src="assets/js/jquery.min.js"></script>
 <?php include('includes/chat.php');?>
 <!-- /Footer--> 
 
 <!--Footer -->
 <?php include('includes/footer.php');?>
 <!-- /Footer--> 
-
-<!--Back to top-->
-<div id="back-top" class="back-top"> <a href="#top"><i class="fa fa-angle-up" aria-hidden="true"></i> </a> </div>
-<!--/Back to top--> 
 
 <!--Login-Form -->
 <?php include('includes/login.php');?>
@@ -202,7 +199,6 @@ foreach($results as $result)
 <!--/Forgot-password-Form --> 
 
 <!-- Scripts --> 
-<script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script> 
 <script src="assets/js/interface.js"></script> 
 <!--Switcher-->
