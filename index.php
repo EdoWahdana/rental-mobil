@@ -54,7 +54,6 @@ error_reporting(0);
           <div class="banner_content">
             <h1>Temukan mobil idamanmu.</h1>
             <p>Kami memiliki ribuan varian mobil siap berkendara.</p>
-            <a href="#" class="btn">Selengkapnya <span class="angle_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></span></a> </div>
         </div>
       </div>
     </div>
