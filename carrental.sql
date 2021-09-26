@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 07, 2021 at 12:57 PM
+-- Generation Time: Sep 26, 2021 at 12:27 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.3.23
 
@@ -111,6 +111,21 @@ CREATE TABLE `tblchat` (
   `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `tblchat`
+--
+
+INSERT INTO `tblchat` (`id_chat`, `id_admin`, `id_user`, `message`, `timestamp`, `status`) VALUES
+(1, 0, 7, ' jb', '2021-09-21 13:39:36', 0),
+(2, 0, 7, 'nn', '2021-09-21 13:40:16', 0),
+(3, 0, 7, 'sdf', '2021-09-21 13:41:34', 0),
+(4, 0, 7, 'jnd', '2021-09-21 13:43:58', 0),
+(5, 0, 7, 'Tes', '2021-09-21 13:48:58', 0),
+(6, 0, 7, 'mn', '2021-09-21 13:50:18', 0),
+(7, 0, 7, 'Tes 2', '2021-09-21 13:50:55', 0),
+(8, 0, 7, 'Tes 3', '2021-09-21 13:51:52', 0),
+(9, 0, 7, 'Tes 4', '2021-09-21 13:52:46', 0);
+
 -- --------------------------------------------------------
 
 --
@@ -176,6 +191,30 @@ INSERT INTO `tblpages` (`id`, `PageName`, `type`, `detail`) VALUES
 (2, 'Privacy Policy', 'privacy', '<span style=\"color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat</span>'),
 (3, 'About Us ', 'aboutus', '<span style=\"color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; text-align: justify;\">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat</span>'),
 (11, 'FAQs', 'faqs', '																														<span style=\"color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\">Address------Test &nbsp; &nbsp;dsfdsfds</span>');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tblpembayaran`
+--
+
+CREATE TABLE `tblpembayaran` (
+  `id_booking` int(11) NOT NULL DEFAULT 0,
+  `total_pembayaran` int(11) NOT NULL,
+  `bukti_pembayaran` varchar(100) CHARACTER SET latin1 NOT NULL,
+  `status_pembayaran` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tblpembayaran`
+--
+
+INSERT INTO `tblpembayaran` (`id_booking`, `total_pembayaran`, `bukti_pembayaran`, `status_pembayaran`) VALUES
+(12, 450000, '5jPKSLkcE4mbgF8HwxV9.jpg', 1),
+(15, 300000, '8DdLmCgTB9PvRiQpNsOy.jpg', 1),
+(16, 300000, '', 0),
+(17, 1126, 'nehOiXkc7xVvHAW409E2.jpg', 1),
+(18, 150000, 'q0CVnxFGfeJcX1OmdhpU.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -295,6 +334,60 @@ INSERT INTO `tblvehicles` (`id`, `VehiclesTitle`, `VehiclesBrand`, `VehiclesOver
 (5, 'Carrera GT', 5, 'Carrera Gt go have a thrilling trip with this Carrera Gt', 345345, 'Petrol', 3453, 7, 'car_755x430.png', NULL, NULL, NULL, NULL, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, '2017-06-20 17:57:09', '2019-03-22 14:00:15'),
 (6, 'Toyota Fortuner', 5, 'Toyota Fortuner tahun 2019 semua surat lengkap dengan fitur lengkap.', 150000, 'Bensin', 2019, 7, 'download.jpg', 'download (1).jpg', 'download.jpg', 'download (1).jpg', '', 1, 1, 1, NULL, 1, 1, NULL, 1, 1, 1, NULL, 1, '2021-07-06 12:27:54', NULL);
 
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `v_booking`
+-- (See below for the actual view)
+--
+CREATE TABLE `v_booking` (
+`FullName` varchar(120)
+,`EmailId` varchar(100)
+,`ContactNo` char(11)
+,`VehiclesTitle` varchar(150)
+,`PricePerDay` int(11)
+,`userEmail` varchar(100)
+,`FromDate` varchar(20)
+,`ToDate` varchar(20)
+,`message` varchar(255)
+,`PostingDate` timestamp
+,`TotalPay` int(11)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `v_chat`
+-- (See below for the actual view)
+--
+CREATE TABLE `v_chat` (
+`id` int(11)
+,`FullName` varchar(120)
+,`id_chat` int(11)
+,`id_admin` int(11)
+,`message` text
+,`timestamp` timestamp
+,`status` int(11)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `v_booking`
+--
+DROP TABLE IF EXISTS `v_booking`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_booking`  AS SELECT `u`.`FullName` AS `FullName`, `u`.`EmailId` AS `EmailId`, `u`.`ContactNo` AS `ContactNo`, `v`.`VehiclesTitle` AS `VehiclesTitle`, `v`.`PricePerDay` AS `PricePerDay`, `b`.`userEmail` AS `userEmail`, `b`.`FromDate` AS `FromDate`, `b`.`ToDate` AS `ToDate`, `b`.`message` AS `message`, `b`.`PostingDate` AS `PostingDate`, `b`.`TotalPay` AS `TotalPay` FROM ((`tblusers` `u` join `tblvehicles` `v`) join `tblbooking` `b` on(`u`.`id` = `b`.`id_user` and `v`.`id` = `b`.`VehicleId`)) WHERE `b`.`Status` = 1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `v_chat`
+--
+DROP TABLE IF EXISTS `v_chat`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_chat`  AS SELECT `u`.`id` AS `id`, `u`.`FullName` AS `FullName`, `c`.`id_chat` AS `id_chat`, `c`.`id_admin` AS `id_admin`, `c`.`message` AS `message`, `c`.`timestamp` AS `timestamp`, `c`.`status` AS `status` FROM (`tblusers` `u` join `tblchat` `c` on(`u`.`id` = `c`.`id_user`)) ;
+
 --
 -- Indexes for dumped tables
 --
@@ -391,7 +484,7 @@ ALTER TABLE `tblbrands`
 -- AUTO_INCREMENT for table `tblchat`
 --
 ALTER TABLE `tblchat`
-  MODIFY `id_chat` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_chat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `tblcontactusinfo`
