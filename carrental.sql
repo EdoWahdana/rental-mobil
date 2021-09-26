@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 26, 2021 at 12:27 PM
+-- Generation Time: Sep 26, 2021 at 01:27 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.3.23
 
@@ -124,7 +124,8 @@ INSERT INTO `tblchat` (`id_chat`, `id_admin`, `id_user`, `message`, `timestamp`,
 (6, 0, 7, 'mn', '2021-09-21 13:50:18', 0),
 (7, 0, 7, 'Tes 2', '2021-09-21 13:50:55', 0),
 (8, 0, 7, 'Tes 3', '2021-09-21 13:51:52', 0),
-(9, 0, 7, 'Tes 4', '2021-09-21 13:52:46', 0);
+(9, 0, 7, 'Tes 4', '2021-09-21 13:52:46', 0),
+(10, 0, 7, 'Tes 5 dari user', '2021-09-26 05:33:55', 0);
 
 -- --------------------------------------------------------
 
@@ -484,7 +485,7 @@ ALTER TABLE `tblbrands`
 -- AUTO_INCREMENT for table `tblchat`
 --
 ALTER TABLE `tblchat`
-  MODIFY `id_chat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_chat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `tblcontactusinfo`

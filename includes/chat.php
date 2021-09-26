@@ -111,8 +111,12 @@ button {
 .chat {
     border: none;
     background: #E2FFE8;
-    font-size: 10px;
+    font-size: 13px;
     border-radius: 20px
+}
+
+.bg-white {
+    background: #FFF;
 }
 </style>
 
@@ -178,7 +182,7 @@ $(document).ready(function() {
                     }   
                     else if(item.id_admin == 0) {
                         $('.chat-group').append(`<div class="d-flex flex-row p-3">
-                        <div class="chat mr-auto bg-black p-3"><span class="text-muted" id="text-user">${item.message}</span></div>
+                        <div class="chat mr-auto bg-white p-3"><span class="text-muted" id="text-user">${item.message}</span></div>
                         </div>`)
                     }
                 });

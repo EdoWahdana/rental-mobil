@@ -128,8 +128,8 @@ $msg="Pesanan Telah Berhasil Dikonfirmasi";
 									</tfoot>
 									<tbody>
 
-									<?php $sql = "SELECT * FROM v_chat GROUP BY id_customer";
-                                        $query = $dbh -> prepare($sql);
+									<?php $sql = "SELECT * FROM v_chat GROUP BY id";
+                                        $query = $dbh->prepare($sql);
                                         $query->execute();
                                         $results=$query->fetchAll(PDO::FETCH_OBJ);
                                         $cnt=1;
@@ -141,6 +141,7 @@ $msg="Pesanan Telah Berhasil Dikonfirmasi";
 											<td><?php echo htmlentities($cnt);?></td>
 											<td><?php echo htmlentities($result->id);?></td>
 											<td><?php echo htmlentities($result->FullName);?></td>
+											<td><a href="pesan_user.php?id_user=<?= $result->id ?>">Chat <i class="fa fa-commenting-o"></i></a></td>
 										</tr>
 										<?php $cnt=$cnt+1; }} ?>
 										
