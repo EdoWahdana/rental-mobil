@@ -117,6 +117,22 @@ button {
 .bg-white {
     background: #FFF;
 }
+.ml-auto {
+	margin-left: auto !important;
+}
+.mr-auto {
+	margin-right: auto !important;
+}
+
+.d-flex {
+    display: -ms-flexbox !important;
+    display: flex !important;
+}
+
+.flex-row {
+    -ms-flex-direction: row !important;
+    flex-direction: row !important;
+}
 </style>
 
 <head>
@@ -165,16 +181,24 @@ button {
     // Submit pesan
     if(isset($_POST['submit'])) {
         $id_admin = $_POST['id_admin'];
+		$id_user = $_POST['id_user'];
         $pesan = $_POST['pesan'];
         $timestamp = $_POST['timestamp'];
-        $sql = "INSERT INTO tblchat (id_admin, message, timestamp) VALUES ($id_admin, $pesan, $timestamp)";
+		$status = 0;
+        $sql = "INSERT INTO tblchat (id_admin, id_user, message, timestamp, status) VALUES (:id_admin, :id_user, :pesan, :timestamp, :status)";
         $query = $dbh->prepare($sql);
+		$query->bindParam(':id_admin', $id_admin, PDO::PARAM_INT);
+		$query->bindParam(':id_user', $id_user, PDO::PARAM_INT);
+		$query->bindParam(':pesan', $pesan, PDO::PARAM_STR);
+		$query->bindParam(':timestamp', $timestamp, PDO::PARAM_STR);
+		$query->bindParam(':status', $status, PDO::PARAM_INT);
         $query->execute();
         $results=$query->fetchAll(PDO::FETCH_OBJ);
         if($query->rowCount() > 0) 
             header("Refresh:1");
         else 
-            var_dump($query->errorInfo());
+			var_dump($query->errorInfo());
+            
     }
 
     // Ambil data pesan
@@ -189,24 +213,25 @@ button {
 
 <div class="d-flex justify-content-center">
     <div class="card">
-        <div class="d-flex flex-row justify-content-between p-3 adiv text-center"> <span class="display-4">Chat Admin</span></div>
+        <div class="p-3 adiv text-center"> <span class="display-4">Chat Admin</span></div>
             <div class="chat-group">
                 <?php 
                 foreach($results as $result) {
                     if($result->id_admin != 0) {
                         echo `<div class="d-flex flex-row p-3"> <img src="https://img.icons8.com/color/48/000000/circled-user-female-skin-type-7.png" width="30" height="5">
                         <div class="chat ml-auto p-3"><span class="text-muted dot" id="text-admin">` . $result->message .`</span></div>
-                        </div>`;
+                        </div> <br>`;
                     } else if ($result->id_admin == 0) {
                         echo `<div class="d-flex flex-row p-3">
                         <div class="chat mr-auto bg-white p-3"><span class="text-muted" id="text-user">`. $result->message .`</span></div>
-                        </div>`;
+                        </div> <br>`;
                     }
                 } // End if foreach
                 ?>
             </div>
             <div class="chat-form"> 
                 <form action="" method="post">
+					<input type="hidden" name="id_user" value="<?= $_GET['id_user'] ?>">
                     <input type="hidden" name="id_admin" value="<?= $_SESSION['id_admin'] ?>">
                     <input type="hidden" name="timestamp" id="timestamp" value="<?= date('Y-m-d H:i:s') ?>">
                     <div class="form-group px-3"> <textarea class="form-control" name="pesan" id="pesan" rows="2" placeholder="Tulis pesan anda..."></textarea> </div>

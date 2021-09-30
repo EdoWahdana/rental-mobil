@@ -32,7 +32,7 @@
 <?php }
 else{ 
 
-echo "Welcome To Car rental portal";
+echo "Selamat Datang";
  } ?>
           </div>
         </div>

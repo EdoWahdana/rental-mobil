@@ -112,11 +112,32 @@ button {
     border: none;
     background: #E2FFE8;
     font-size: 13px;
-    border-radius: 20px
+    border-radius: 10px;
+    padding: 0px 15px 10px;
 }
 
 .bg-white {
     background: #FFF;
+}
+
+.ml-auto {
+	margin-right: auto !important;
+}
+.mr-auto {
+	margin-left: auto !important;
+}
+.d-flex {
+    display: -ms-flexbox !important;
+    display: flex !important;
+}
+.flex-row {
+    -ms-flex-direction: row !important;
+    flex-direction: row !important;
+    margin-bottom: 7px;
+}
+.text-white {
+    color: #FFF;
+    padding-top: 5px;
 }
 </style>
 
@@ -125,8 +146,8 @@ button {
 <div class="wrapper">
 <div class="d-flex justify-content-center">
     <div class="card">
-        <div class="d-flex flex-row justify-content-between p-3 adiv text-center"> <span class="display-4">Chat Admin</span></div>
-            <div class="chat-group"></div>
+        <div class="p-3 adiv text-center"> <h6 class="text-white">Chat Admin</h6></div>
+            <div class="chat-group" style="margin-top: 10px;"></div>
             <div class="chat-form"> 
                 <input type="hidden" id="id_customer" value="<?= $_SESSION['id_user'] ?>">
                 <input type="hidden" id="timestamp" value="<?= date('Y-m-d H:i:s') ?>">
@@ -176,13 +197,13 @@ $(document).ready(function() {
                 console.log(data);
                 $.each(data, function(index, item) {
                     if(item.id_admin != 0) {
-                        $('.chat-group').append(`<div class="d-flex flex-row p-3"> <img src="https://img.icons8.com/color/48/000000/circled-user-female-skin-type-7.png" width="30" height="5">
+                        $('.chat-group').append(`<div class="d-flex flex-row p-3"> <img src="https://img.icons8.com/color/48/000000/circled-user-female-skin-type-7.png" width="30" height="30">
                         <div class="chat ml-auto p-3"><span class="text-muted dot" id="text-admin">${item.message}</span></div>
                         </div>`)
                     }   
                     else if(item.id_admin == 0) {
                         $('.chat-group').append(`<div class="d-flex flex-row p-3">
-                        <div class="chat mr-auto bg-white p-3"><span class="text-muted" id="text-user">${item.message}</span></div>
+                        <div class="chat mr-auto p-3"><span class="text-muted" id="text-user">${item.message}</span></div>
                         </div>`)
                     }
                 });
