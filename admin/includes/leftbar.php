@@ -24,5 +24,6 @@
 			<li><a href="manage-subscribers.php"><i class="fa fa-table"></i> Manage Subscribers</a></li> -->
 			<li><a href="laporan.php"><i class="fa fa-files-o"></i> Cetak Laporan Pesanan</a></li>
 			<li><a href="pesan.php"><i class="fa fa-comment"></i> Pesan Pengguna</a></li>
+			<li><a href="change-banner.php"><i class="fa fa-image"></i> Gambar Banner</a></li>
 		</ul>
 	</nav>

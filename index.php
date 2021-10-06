@@ -34,6 +34,7 @@ error_reporting(0);
 <link rel="apple-touch-icon-precomposed" href="assets/images/favicon-icon/apple-touch-icon-57-precomposed.png">
 <link rel="shortcut icon" href="assets/images/favicon-icon/favicon.png">
 <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet"> 
+
 </head>
 <body>
 
@@ -46,7 +47,14 @@ error_reporting(0);
 <!-- /Header --> 
 
 <!-- Banners -->
-<section id="banner" class="banner-section">
+<?php 
+	$sql ="SELECT * FROM tblbanner WHERE id_banner = 1";
+	$query= $dbh -> prepare($sql);
+	$query-> execute();
+	$result_banner = $query -> fetchAll(PDO::FETCH_OBJ);
+?>
+
+<section id="banner" class="banner-section" style="background-image: url(<?= $_SERVER['REQUEST_URI'] ?>/assets/images/<?= $result_banner[0]->gambar ?>) !important;">
   <div class="container">
     <div class="div_zindex">
       <div class="row">

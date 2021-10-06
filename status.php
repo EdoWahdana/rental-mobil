@@ -96,8 +96,11 @@ if(isset($_POST['cancel'])) {
 }
 ?>
 
-<section class="contact_us section-padding">
+<section class="contact_us">
   <div class="container">
+	<div class="gray-bg text-center">
+		<p style="padding: 10px;"><b style="color: red; margin-left: 20px; font-size: 20px;">INFORMASI</b> : <b style="font-size: 17px;">Jika pengembalian mobil terlambat, maka akan dikenakan denda Rp. 150.000 / perhari</b></p>
+	</div>
     <div  class="row">
       <div class="col-md-6">
         <h3>Pesanan Anda</h3>

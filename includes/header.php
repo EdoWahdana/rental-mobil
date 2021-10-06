@@ -72,6 +72,7 @@ foreach($results as $result)
           <li><a href="my-testimonials.php">Testimoni Saya</a></li>
             <li><a href="logout.php">Sign Out</a></li>
             <?php } else { ?>
+			<li><a href="/carrental/admin"  target="blank">LOGIN ADMIN</a></li>
             <li><a href="#loginform"  data-toggle="modal" data-dismiss="modal">LOGIN</a></li>
             <?php } ?>
           </ul>
