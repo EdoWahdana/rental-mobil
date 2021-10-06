@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 26, 2021 at 01:27 PM
+-- Generation Time: Oct 06, 2021 at 08:34 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.3.23
 
@@ -40,6 +40,25 @@ CREATE TABLE `admin` (
 
 INSERT INTO `admin` (`id`, `UserName`, `Password`, `updationDate`) VALUES
 (1, 'admin', '21232f297a57a5a743894a0e4a801fc3', '2021-06-17 04:59:53');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tblbanner`
+--
+
+CREATE TABLE `tblbanner` (
+  `id_banner` int(11) NOT NULL,
+  `caption` varchar(100) NOT NULL,
+  `gambar` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tblbanner`
+--
+
+INSERT INTO `tblbanner` (`id_banner`, `caption`, `gambar`) VALUES
+(1, 'Banner', 'J2ADRNzi9E1kLq6jCIBV.jpg');
 
 -- --------------------------------------------------------
 
@@ -125,7 +144,10 @@ INSERT INTO `tblchat` (`id_chat`, `id_admin`, `id_user`, `message`, `timestamp`,
 (7, 0, 7, 'Tes 2', '2021-09-21 13:50:55', 0),
 (8, 0, 7, 'Tes 3', '2021-09-21 13:51:52', 0),
 (9, 0, 7, 'Tes 4', '2021-09-21 13:52:46', 0),
-(10, 0, 7, 'Tes 5 dari user', '2021-09-26 05:33:55', 0);
+(10, 0, 7, 'Tes 5 dari user', '2021-09-26 05:33:55', 0),
+(11, 0, 7, 'Tes  6 dari user', '2021-09-29 23:38:07', 0),
+(12, 1, 7, 'Admin', '2021-09-30 01:07:52', 0),
+(13, 1, 7, 'Admin', '2021-09-30 01:07:52', 0);
 
 -- --------------------------------------------------------
 
@@ -288,7 +310,8 @@ CREATE TABLE `tblusers` (
 INSERT INTO `tblusers` (`id`, `FullName`, `EmailId`, `Password`, `ContactNo`, `dob`, `Address`, `City`, `Country`, `RegDate`, `UpdationDate`) VALUES
 (5, 'Clive Dela Cruz', 'clive@gmail.com', '588844f1b69fe83502cac2a6df440452', '0945208280', NULL, NULL, NULL, NULL, '2019-03-22 13:38:20', NULL),
 (7, 'Edo Wahdana', 'edo@gmail.com', 'd2d612f72e42577991f4a5936cecbcc0', '0812312381', NULL, NULL, NULL, NULL, '2021-06-23 11:53:41', NULL),
-(8, 'Andrey', 'andre@gmail.com', 'dd573120e473c889140e34e817895495', '083312377', NULL, NULL, NULL, NULL, '2021-08-11 07:23:56', NULL);
+(8, 'Andrey', 'andre@gmail.com', 'dd573120e473c889140e34e817895495', '083312377', NULL, NULL, NULL, NULL, '2021-08-11 07:23:56', NULL),
+(9, 'Rade Andre', 'rade@gmail.com', '90178ca8dea46e997df3378757489f34', '08123123818', NULL, NULL, NULL, NULL, '2021-10-04 06:41:42', NULL);
 
 -- --------------------------------------------------------
 
@@ -400,6 +423,12 @@ ALTER TABLE `admin`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `tblbanner`
+--
+ALTER TABLE `tblbanner`
+  ADD PRIMARY KEY (`id_banner`);
+
+--
 -- Indexes for table `tblbooking`
 --
 ALTER TABLE `tblbooking`
@@ -470,6 +499,12 @@ ALTER TABLE `admin`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `tblbanner`
+--
+ALTER TABLE `tblbanner`
+  MODIFY `id_banner` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `tblbooking`
 --
 ALTER TABLE `tblbooking`
@@ -485,7 +520,7 @@ ALTER TABLE `tblbrands`
 -- AUTO_INCREMENT for table `tblchat`
 --
 ALTER TABLE `tblchat`
-  MODIFY `id_chat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_chat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `tblcontactusinfo`
@@ -521,7 +556,7 @@ ALTER TABLE `tbltestimonial`
 -- AUTO_INCREMENT for table `tblusers`
 --
 ALTER TABLE `tblusers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `tblvehicles`
