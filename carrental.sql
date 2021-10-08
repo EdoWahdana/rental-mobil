@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 06, 2021 at 08:34 AM
+-- Generation Time: Oct 08, 2021 at 05:42 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.3.23
 
@@ -58,7 +58,7 @@ CREATE TABLE `tblbanner` (
 --
 
 INSERT INTO `tblbanner` (`id_banner`, `caption`, `gambar`) VALUES
-(1, 'Banner', 'J2ADRNzi9E1kLq6jCIBV.jpg');
+(1, 'Banner', 'C2HvmhSn5XBDINwfce9x.jpg');
 
 -- --------------------------------------------------------
 
@@ -89,7 +89,10 @@ INSERT INTO `tblbooking` (`id`, `id_user`, `userEmail`, `VehicleId`, `FromDate`,
 (15, 7, 'edo@gmail.com', 6, '2021-07-17', '2021-07-19', 'Yang bagus mobilnya ya, jangan ada lecet', 1, '2021-07-15 15:23:04', 300000, '8DdLmCgTB9PvRiQpNsOy.jpg'),
 (16, 7, 'edo@gmail.com', 6, '2021-07-16', '2021-07-20', 'Lagi diskon nih ya', 0, '2021-07-15 15:37:42', 300000, ''),
 (17, 8, 'andre@gmail.com', 3, '2021-08-12', '2021-08-14', 'Warna hitam', 1, '2021-08-11 07:26:45', 1126, 'nehOiXkc7xVvHAW409E2.jpg'),
-(18, 8, 'andre@gmail.com', 6, '2021-08-13', '2021-08-14', 'Yang bagus', 1, '2021-08-11 07:43:19', 150000, 'q0CVnxFGfeJcX1OmdhpU.jpg');
+(18, 8, 'andre@gmail.com', 6, '2021-08-13', '2021-08-14', 'Yang bagus', 1, '2021-08-11 07:43:19', 150000, 'q0CVnxFGfeJcX1OmdhpU.jpg'),
+(19, 7, 'edo@gmail.com', 5, '2021-10-08', '2021-10-09', 'Tes 1', 0, '2021-10-08 15:00:39', 172672, ''),
+(20, 7, 'edo@gmail.com', 5, '2021-10-08', '2021-10-09', 'Tes 1', 0, '2021-10-08 15:02:25', 172672, ''),
+(21, 7, 'edo@gmail.com', 5, '2021-10-08', '2021-10-09', 'Tes 1', 0, '2021-10-08 15:03:51', 172672, '');
 
 -- --------------------------------------------------------
 
@@ -311,7 +314,8 @@ INSERT INTO `tblusers` (`id`, `FullName`, `EmailId`, `Password`, `ContactNo`, `d
 (5, 'Clive Dela Cruz', 'clive@gmail.com', '588844f1b69fe83502cac2a6df440452', '0945208280', NULL, NULL, NULL, NULL, '2019-03-22 13:38:20', NULL),
 (7, 'Edo Wahdana', 'edo@gmail.com', 'd2d612f72e42577991f4a5936cecbcc0', '0812312381', NULL, NULL, NULL, NULL, '2021-06-23 11:53:41', NULL),
 (8, 'Andrey', 'andre@gmail.com', 'dd573120e473c889140e34e817895495', '083312377', NULL, NULL, NULL, NULL, '2021-08-11 07:23:56', NULL),
-(9, 'Rade Andre', 'rade@gmail.com', '90178ca8dea46e997df3378757489f34', '08123123818', NULL, NULL, NULL, NULL, '2021-10-04 06:41:42', NULL);
+(9, 'Rade Andre', 'rade@gmail.com', '90178ca8dea46e997df3378757489f34', '08123123818', NULL, NULL, NULL, NULL, '2021-10-04 06:41:42', NULL),
+(10, 'Muhammad Abid', 'abid@gmail.com', 'fbc2097d2d2310090e007162a34ff628', '08664516747', NULL, NULL, NULL, NULL, '2021-10-08 14:28:53', NULL);
 
 -- --------------------------------------------------------
 
@@ -328,6 +332,7 @@ CREATE TABLE `tblvehicles` (
   `FuelType` varchar(100) DEFAULT NULL,
   `ModelYear` int(6) DEFAULT NULL,
   `SeatingCapacity` int(11) DEFAULT NULL,
+  `is_available` int(1) DEFAULT NULL,
   `Vimage1` varchar(120) DEFAULT NULL,
   `Vimage2` varchar(120) DEFAULT NULL,
   `Vimage3` varchar(120) DEFAULT NULL,
@@ -353,10 +358,10 @@ CREATE TABLE `tblvehicles` (
 -- Dumping data for table `tblvehicles`
 --
 
-INSERT INTO `tblvehicles` (`id`, `VehiclesTitle`, `VehiclesBrand`, `VehiclesOverview`, `PricePerDay`, `FuelType`, `ModelYear`, `SeatingCapacity`, `Vimage1`, `Vimage2`, `Vimage3`, `Vimage4`, `Vimage5`, `AirConditioner`, `PowerDoorLocks`, `AntiLockBrakingSystem`, `BrakeAssist`, `PowerSteering`, `DriverAirbag`, `PassengerAirbag`, `PowerWindows`, `CDPlayer`, `CentralLocking`, `CrashSensor`, `LeatherSeats`, `RegDate`, `UpdationDate`) VALUES
-(3, 'Avanza New', 4, 'Nissan Avanza, All new Nissan Avanza ready to go for a trip with this new ride', 563, 'Bensin', 2012, 5, 'featured-img-3.jpg', 'dealer-logo.jpg', 'img_390x390.jpg', 'listing_img3.jpg', '', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, NULL, NULL, '2017-06-19 16:18:20', '2021-07-06 12:23:20'),
-(5, 'Carrera GT', 5, 'Carrera Gt go have a thrilling trip with this Carrera Gt', 345345, 'Petrol', 3453, 7, 'car_755x430.png', NULL, NULL, NULL, NULL, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, '2017-06-20 17:57:09', '2019-03-22 14:00:15'),
-(6, 'Toyota Fortuner', 5, 'Toyota Fortuner tahun 2019 semua surat lengkap dengan fitur lengkap.', 150000, 'Bensin', 2019, 7, 'download.jpg', 'download (1).jpg', 'download.jpg', 'download (1).jpg', '', 1, 1, 1, NULL, 1, 1, NULL, 1, 1, 1, NULL, 1, '2021-07-06 12:27:54', NULL);
+INSERT INTO `tblvehicles` (`id`, `VehiclesTitle`, `VehiclesBrand`, `VehiclesOverview`, `PricePerDay`, `FuelType`, `ModelYear`, `SeatingCapacity`, `is_available`, `Vimage1`, `Vimage2`, `Vimage3`, `Vimage4`, `Vimage5`, `AirConditioner`, `PowerDoorLocks`, `AntiLockBrakingSystem`, `BrakeAssist`, `PowerSteering`, `DriverAirbag`, `PassengerAirbag`, `PowerWindows`, `CDPlayer`, `CentralLocking`, `CrashSensor`, `LeatherSeats`, `RegDate`, `UpdationDate`) VALUES
+(3, 'Avanza New', 4, 'Nissan Avanza, All new Nissan Avanza ready to go for a trip with this new ride', 563, 'Bensin', 2012, 5, 1, 'featured-img-3.jpg', 'dealer-logo.jpg', 'img_390x390.jpg', 'listing_img3.jpg', '', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, NULL, NULL, '2017-06-19 16:18:20', '2021-10-08 15:13:21'),
+(5, 'Carrera GT', 5, 'Carrera Gt go have a thrilling trip with this Carrera Gt', 345345, 'Petrol', 3453, 7, 0, 'car_755x430.png', NULL, NULL, NULL, NULL, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, '2017-06-20 17:57:09', '2021-10-08 15:00:39'),
+(6, 'Toyota Fortuner', 5, 'Toyota Fortuner tahun 2019 semua surat lengkap dengan fitur lengkap.', 150000, 'Bensin', 2019, 7, 1, 'download.jpg', 'download (1).jpg', 'download.jpg', 'download (1).jpg', '', 1, 1, 1, NULL, 1, 1, NULL, 1, 1, 1, NULL, 1, '2021-07-06 12:27:54', '2021-10-08 15:13:24');
 
 -- --------------------------------------------------------
 
@@ -508,7 +513,7 @@ ALTER TABLE `tblbanner`
 -- AUTO_INCREMENT for table `tblbooking`
 --
 ALTER TABLE `tblbooking`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `tblbrands`
@@ -556,7 +561,7 @@ ALTER TABLE `tbltestimonial`
 -- AUTO_INCREMENT for table `tblusers`
 --
 ALTER TABLE `tblusers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `tblvehicles`
