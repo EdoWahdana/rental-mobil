@@ -84,15 +84,20 @@ if(isset($_POST['cancel'])) {
     $query->bindParam(':id', $id, PDO::PARAM_INT);
     $query->execute();
     $count = $query->rowCount();
-
-    if($count > 0)
-        echo "<script type='text/javascript'> 
+    if($count > 0) {
+		$sqlUpdate = "UPDATE tblvehicles SET is_available WHERE id=:id";
+		$query = $dbh->prepare($sqlUpdate);
+		$query->bindParam(':id', $id, PDO::PARAM_INT);
+		$result = $query->execute();
+		if($result) 
+			echo "<script type='text/javascript'> 
                 alert('Pesanan berhasil dibatalkan');
                 window.location.href = 'my-booking.php'; </script>";
-    else 
-    echo "<script type='text/javascript'> 
+	} else {
+			echo "<script type='text/javascript'> 
                 alert('Terjadi kesalan. Silahkan coba lagi');
                 window.location.href = 'status.php?order=".$id."'; </script>";
+	}
 }
 ?>
 
@@ -123,7 +128,7 @@ if(isset($_POST['cancel'])) {
                   $query = $dbh->prepare($sql);
                   $query->execute();
                   $count = $query->fetchAll(PDO::FETCH_OBJ);
-                  if($count[0]->user_count % 2 == 0 && $count[0]->user_count != 0) { 
+                  if($count[0]->user_count % 5 == 0 && $count[0]->user_count != 0) { 
                     $promo = floor($result->PricePerDay / 2); ?>
                     <sup><del class="text-danger"><p class="text-danger" style="margin: 0; padding: 0; font-size: 12px"> <?php echo htmlentities(number_format($result->PricePerDay, 0, ',', '.'));?> </p></del></sup>
                     <h6 style="margin-top: -10px; padding: 0;"> <?php echo htmlentities(number_format($promo, 0, ',', '.'));?></h6>

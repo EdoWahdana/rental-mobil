@@ -39,7 +39,7 @@ error_reporting(0);
 <body>
 
 <!-- Start Switcher -->
-<?php include('includes/colorswitcher.php');?>
+<?php //include('includes/colorswitcher.php');?>
 <!-- /Switcher -->  
         
 <!--Header-->
@@ -54,7 +54,7 @@ error_reporting(0);
 	$result_banner = $query -> fetchAll(PDO::FETCH_OBJ);
 ?>
 
-<section id="banner" class="banner-section" style="background-image: url(<?= $_SERVER['REQUEST_URI'] ?>/assets/images/<?= $result_banner[0]->gambar ?>) !important;">
+<section id="banner" class="banner-section" style="background-image: url(./assets/images/<?= $result_banner[0]->gambar ?>) !important;">
   <div class="container">
     <div class="div_zindex">
       <div class="row">
@@ -91,7 +91,7 @@ error_reporting(0);
         <div role="tabpanel" class="tab-pane active" id="resentnewcar">
 
 <?php 
-  $sql = "SELECT tblvehicles.VehiclesTitle,tblbrands.BrandName,tblvehicles.PricePerDay,tblvehicles.FuelType,tblvehicles.ModelYear,tblvehicles.id,tblvehicles.SeatingCapacity,tblvehicles.VehiclesOverview,tblvehicles.Vimage1 from tblvehicles join tblbrands on tblbrands.id=tblvehicles.VehiclesBrand";
+  $sql = "SELECT tblvehicles.VehiclesTitle,tblbrands.BrandName,tblvehicles.PricePerDay,tblvehicles.FuelType,tblvehicles.ModelYear,tblvehicles.id,tblvehicles.SeatingCapacity,tblvehicles.VehiclesOverview,tblvehicles.Vimage1 FROM tblvehicles JOIN tblbrands ON tblbrands.id=tblvehicles.VehiclesBrand WHERE tblvehicles.is_available=1";
   $query = $dbh -> prepare($sql);
   $query->execute();
   $results=$query->fetchAll(PDO::FETCH_OBJ);
@@ -118,11 +118,11 @@ error_reporting(0);
     $query = $dbh->prepare($sql);
     $query->execute();
     $count = $query->fetchAll(PDO::FETCH_OBJ);
-    if($count[0]->user_count % 2 == 0 && $count[0]->user_count != 0) { ?>
+    if($count[0]->user_count % 5 == 0 && $count[0]->user_count != 0) { ?>
       <sup><del><span>Rp. <?php echo htmlentities($result->PricePerDay);?> /Hari</span></del></sup>
-      <span class="price">Rp. <?php echo htmlentities(floor($result->PricePerDay / 2));?> /Hari</span>
+      <span class="price">Rp. <?php echo htmlentities(number_format(($result->PricePerDay / 2),0 , ',', '.'));?> /Hari</span>
 <?php } else { ?>
-      <span class="price">Rp. <?php echo htmlentities($result->PricePerDay);?> /Hari</span>
+      <span class="price">Rp. <?php echo htmlentities(number_format($result->PricePerDay, 0, ',', '.'));?> /Hari</span>
 <?php  } 
   }
 ?>

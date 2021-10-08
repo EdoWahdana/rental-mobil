@@ -27,12 +27,20 @@ $query->execute();
 $lastInsertId = $dbh->lastInsertId();
 if($lastInsertId)
 {
-echo "<script>alert('Booking Berhasil.');</script>";
-header('Location: status.php?order=' . $lastInsertId);
+	$sqlUpdate = "UPDATE tblvehicles SET is_available=0 WHERE id=:vhid"; 
+	$queryUpdate = $dbh->prepare($sqlUpdate);
+	$queryUpdate->bindParam(':vhid', $vhid, PDO::PARAM_STR);
+	$lastUpdatedId = $queryUpdate->execute();
+	if($lastUpdatedId) {
+		echo "<script>alert('Booking Berhasil.');</script>";
+		header('Location: status.php?order=' . $lastInsertId);
+	} else {
+		echo "<script>alert('". $query->errorInfo() ." Something went wrong. Please try again');</script>";
+	}
 }
 else 
 {
-echo "<script>alert('". $query->errorInfo() ." Something went wrong. Please try again');</script>";
+	echo "<script>alert('". $query->errorInfo() ." Something went wrong. Please try again');</script>";
 }
 
 }
@@ -138,12 +146,12 @@ $_SESSION['brndid']=$result->bid;
             $query = $dbh->prepare($sql);
             $query->execute();
             $count = $query->fetchAll(PDO::FETCH_OBJ);
-            if($count[0]->user_count % 2 == 0 && $count[0]->user_count != 0) { 
+            if($count[0]->user_count % 5 == 0 && $count[0]->user_count != 0) { 
               $promo = floor($result->PricePerDay / 2); ?>
-              <sup><del><p style="font-size: 20px; color: grey;">Rp. <?php echo htmlentities($result->PricePerDay);?> </p></del></sup>
-              <p>Rp. <?php echo htmlentities($promo);?> </p>Per Hari
+              <sup><del><p style="font-size: 20px; color: grey;">Rp. <?php echo htmlentities(number_format($result->PricePerDay, 0, ',', '.'));?> </p></del></sup>
+              <p>Rp. <?php echo htmlentities(number_format($promo, 0, ',', '.'));?> </p>Per Hari
         <?php } else { ?>
-            <p>Rp. <?php echo htmlentities($result->PricePerDay);?> </p>Per Hari
+            <p>Rp. <?php echo htmlentities(number_format($result->PricePerDay, 0, ',', '.'));?> </p>Per Hari
         <?php  } 
           }
         ?>
@@ -366,7 +374,7 @@ $_SESSION['brndid']=$result->bid;
           <?php if($_SESSION['login'])
               {?>
               <div class="form-group">
-                <input type="submit" class="btn"  name="submit" value="Pesan Sekarang">
+                <input type="submit" class="btn" name="submit" value="Pesan Sekarang">
               </div>
               <?php } else { ?>
 <a href="#loginform" class="btn btn-xs uppercase" data-toggle="modal" data-dismiss="modal">Login Untuk Pesan</a>

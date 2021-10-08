@@ -81,7 +81,7 @@ error_reporting(0);
           <div class="sorting-count">
 <?php 
 //Query for Listing count
-$sql = "SELECT id from tblvehicles";
+$sql = "SELECT id from tblvehicles WHERE is_available=1";
 $query = $dbh -> prepare($sql);
 $query->bindParam(':vhid',$vhid, PDO::PARAM_STR);
 $query->execute();
@@ -92,7 +92,7 @@ $cnt=$query->rowCount();
 </div>
 </div>
 
-<?php $sql = "SELECT tblvehicles.*,tblbrands.BrandName,tblbrands.id as bid  from tblvehicles join tblbrands on tblbrands.id=tblvehicles.VehiclesBrand";
+<?php $sql = "SELECT tblvehicles.*,tblbrands.BrandName,tblbrands.id AS bid FROM tblvehicles JOIN tblbrands ON tblbrands.id=tblvehicles.VehiclesBrand WHERE tblvehicles.is_available=1";
 $query = $dbh -> prepare($sql);
 $query->execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);
@@ -112,7 +112,7 @@ foreach($results as $result)
                 $query = $dbh->prepare($sql);
                 $query->execute();
                 $count = $query->fetchAll(PDO::FETCH_OBJ);
-                if($count[0]->user_count % 2 == 0 && $count[0]->user_count != 0) { ?>
+                if($count[0]->user_count % 5 == 0 && $count[0]->user_count != 0) { ?>
                   <sup><del><span>Rp. <?php echo htmlentities($result->PricePerDay);?> /Hari</span></del></sup>
                   <span class="price">Rp. <?php echo htmlentities(floor($result->PricePerDay / 2));?> /Hari</span>
             <?php } else { ?>
@@ -178,7 +178,7 @@ foreach($results as $result)
           </div>
           <div class="recent_addedcars">
             <ul>
-<?php $sql = "SELECT tblvehicles.*,tblbrands.BrandName,tblbrands.id as bid  from tblvehicles join tblbrands on tblbrands.id=tblvehicles.VehiclesBrand order by id desc limit 4";
+<?php $sql = "SELECT tblvehicles.*,tblbrands.BrandName,tblbrands.id AS bid FROM tblvehicles JOIN tblbrands ON tblbrands.id=tblvehicles.VehiclesBrand WHERE tblvehicles.is_available=1 ORDER BY id DESC LIMIT 4";
 $query = $dbh -> prepare($sql);
 $query->execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);
