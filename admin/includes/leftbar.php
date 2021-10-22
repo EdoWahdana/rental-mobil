@@ -25,5 +25,6 @@
 			<li><a href="laporan.php"><i class="fa fa-files-o"></i> Cetak Laporan Pesanan</a></li>
 			<li><a href="pesan.php"><i class="fa fa-comment"></i> Pesan Pengguna</a></li>
 			<li><a href="change-banner.php"><i class="fa fa-image"></i> Gambar Banner</a></li>
+			<li><a href="diskon.php"><i class="fa fa-sitemap"></i> Diskon Mobil</a></li>
 		</ul>
 	</nav>

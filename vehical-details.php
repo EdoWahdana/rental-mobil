@@ -146,8 +146,8 @@ $_SESSION['brndid']=$result->bid;
             $query = $dbh->prepare($sql);
             $query->execute();
             $count = $query->fetchAll(PDO::FETCH_OBJ);
-            if($count[0]->user_count % 5 == 0 && $count[0]->user_count != 0) { 
-              $promo = floor($result->PricePerDay / 2); ?>
+            if($result->Discount != NULL) { 
+              $promo = $result->PricePerDay - floor($result->PricePerDay * $result->Discount / 100); ?>
               <sup><del><p style="font-size: 20px; color: grey;">Rp. <?php echo htmlentities(number_format($result->PricePerDay, 0, ',', '.'));?> </p></del></sup>
               <p>Rp. <?php echo htmlentities(number_format($promo, 0, ',', '.'));?> </p>Per Hari
         <?php } else { ?>

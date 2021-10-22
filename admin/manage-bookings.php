@@ -161,12 +161,12 @@ foreach($results as $result)
 											<td><?php 
 if($result->Status==0)
 {
-echo htmlentities('Not Confirmed yet');
+echo htmlentities('Belum dikonfirmasi');
 } else if ($result->Status==1) {
-echo htmlentities('Confirmed');
+echo htmlentities('Dikonfirmasi');
 }
  else{
- 	echo htmlentities('Cancelled');
+ 	echo htmlentities('Ditolak');
  }
 										?></td>
 <td><?php echo htmlentities($result->PostingDate);?></td>

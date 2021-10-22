@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 08, 2021 at 05:42 PM
+-- Generation Time: Oct 22, 2021 at 03:47 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.3.23
 
@@ -87,7 +87,7 @@ CREATE TABLE `tblbooking` (
 INSERT INTO `tblbooking` (`id`, `id_user`, `userEmail`, `VehicleId`, `FromDate`, `ToDate`, `message`, `Status`, `PostingDate`, `TotalPay`, `Payment`) VALUES
 (12, 7, 'edo@gmail.com', 6, '2021-07-15', '2021-07-18', 'Yang bagus om ', 1, '2021-07-15 14:39:29', 450000, '5jPKSLkcE4mbgF8HwxV9.jpg'),
 (15, 7, 'edo@gmail.com', 6, '2021-07-17', '2021-07-19', 'Yang bagus mobilnya ya, jangan ada lecet', 1, '2021-07-15 15:23:04', 300000, '8DdLmCgTB9PvRiQpNsOy.jpg'),
-(16, 7, 'edo@gmail.com', 6, '2021-07-16', '2021-07-20', 'Lagi diskon nih ya', 0, '2021-07-15 15:37:42', 300000, ''),
+(16, 7, 'edo@gmail.com', 6, '2021-07-16', '2021-07-20', 'Lagi diskon nih ya', 2, '2021-07-15 15:37:42', 300000, ''),
 (17, 8, 'andre@gmail.com', 3, '2021-08-12', '2021-08-14', 'Warna hitam', 1, '2021-08-11 07:26:45', 1126, 'nehOiXkc7xVvHAW409E2.jpg'),
 (18, 8, 'andre@gmail.com', 6, '2021-08-13', '2021-08-14', 'Yang bagus', 1, '2021-08-11 07:43:19', 150000, 'q0CVnxFGfeJcX1OmdhpU.jpg'),
 (19, 7, 'edo@gmail.com', 5, '2021-10-08', '2021-10-09', 'Tes 1', 0, '2021-10-08 15:00:39', 172672, ''),
@@ -332,6 +332,7 @@ CREATE TABLE `tblvehicles` (
   `FuelType` varchar(100) DEFAULT NULL,
   `ModelYear` int(6) DEFAULT NULL,
   `SeatingCapacity` int(11) DEFAULT NULL,
+  `Discount` int(3) DEFAULT NULL,
   `is_available` int(1) DEFAULT NULL,
   `Vimage1` varchar(120) DEFAULT NULL,
   `Vimage2` varchar(120) DEFAULT NULL,
@@ -358,10 +359,10 @@ CREATE TABLE `tblvehicles` (
 -- Dumping data for table `tblvehicles`
 --
 
-INSERT INTO `tblvehicles` (`id`, `VehiclesTitle`, `VehiclesBrand`, `VehiclesOverview`, `PricePerDay`, `FuelType`, `ModelYear`, `SeatingCapacity`, `is_available`, `Vimage1`, `Vimage2`, `Vimage3`, `Vimage4`, `Vimage5`, `AirConditioner`, `PowerDoorLocks`, `AntiLockBrakingSystem`, `BrakeAssist`, `PowerSteering`, `DriverAirbag`, `PassengerAirbag`, `PowerWindows`, `CDPlayer`, `CentralLocking`, `CrashSensor`, `LeatherSeats`, `RegDate`, `UpdationDate`) VALUES
-(3, 'Avanza New', 4, 'Nissan Avanza, All new Nissan Avanza ready to go for a trip with this new ride', 563, 'Bensin', 2012, 5, 1, 'featured-img-3.jpg', 'dealer-logo.jpg', 'img_390x390.jpg', 'listing_img3.jpg', '', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, NULL, NULL, '2017-06-19 16:18:20', '2021-10-08 15:13:21'),
-(5, 'Carrera GT', 5, 'Carrera Gt go have a thrilling trip with this Carrera Gt', 345345, 'Petrol', 3453, 7, 0, 'car_755x430.png', NULL, NULL, NULL, NULL, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, '2017-06-20 17:57:09', '2021-10-08 15:00:39'),
-(6, 'Toyota Fortuner', 5, 'Toyota Fortuner tahun 2019 semua surat lengkap dengan fitur lengkap.', 150000, 'Bensin', 2019, 7, 1, 'download.jpg', 'download (1).jpg', 'download.jpg', 'download (1).jpg', '', 1, 1, 1, NULL, 1, 1, NULL, 1, 1, 1, NULL, 1, '2021-07-06 12:27:54', '2021-10-08 15:13:24');
+INSERT INTO `tblvehicles` (`id`, `VehiclesTitle`, `VehiclesBrand`, `VehiclesOverview`, `PricePerDay`, `FuelType`, `ModelYear`, `SeatingCapacity`, `Discount`, `is_available`, `Vimage1`, `Vimage2`, `Vimage3`, `Vimage4`, `Vimage5`, `AirConditioner`, `PowerDoorLocks`, `AntiLockBrakingSystem`, `BrakeAssist`, `PowerSteering`, `DriverAirbag`, `PassengerAirbag`, `PowerWindows`, `CDPlayer`, `CentralLocking`, `CrashSensor`, `LeatherSeats`, `RegDate`, `UpdationDate`) VALUES
+(3, 'Avanza New', 4, 'Nissan Avanza, All new Nissan Avanza ready to go for a trip with this new ride', 563, 'Bensin', 2012, 5, 50, 1, 'featured-img-3.jpg', 'dealer-logo.jpg', 'img_390x390.jpg', 'listing_img3.jpg', '', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, NULL, NULL, '2017-06-19 16:18:20', '2021-10-22 13:47:21'),
+(5, 'Carrera GT', 5, 'Carrera Gt go have a thrilling trip with this Carrera Gt', 345345, 'Petrol', 3453, 7, 50, 1, 'car_755x430.png', NULL, NULL, NULL, NULL, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, '2017-06-20 17:57:09', '2021-10-22 13:47:24'),
+(6, 'Toyota Fortuner', 5, 'Toyota Fortuner tahun 2019 semua surat lengkap dengan fitur lengkap.', 150000, 'Bensin', 2019, 7, NULL, 1, 'download.jpg', 'download (1).jpg', 'download.jpg', 'download (1).jpg', '', 1, 1, 1, NULL, 1, 1, NULL, 1, 1, 1, NULL, 1, '2021-07-06 12:27:54', '2021-10-08 15:13:24');
 
 -- --------------------------------------------------------
 

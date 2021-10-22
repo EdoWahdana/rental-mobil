@@ -112,11 +112,11 @@ foreach($results as $result)
                 $query = $dbh->prepare($sql);
                 $query->execute();
                 $count = $query->fetchAll(PDO::FETCH_OBJ);
-                if($count[0]->user_count % 5 == 0 && $count[0]->user_count != 0) { ?>
+                if($result->Discount != NULL) { ?>
                   <sup><del><span>Rp. <?php echo htmlentities($result->PricePerDay);?> /Hari</span></del></sup>
-                  <span class="price">Rp. <?php echo htmlentities(floor($result->PricePerDay / 2));?> /Hari</span>
+                  <span class="price">Rp. <?php echo htmlentities(number_format($result->PricePerDay - floor($result->PricePerDay * $result->Discount / 100),0 , ',', '.'));?> /Hari</span>
             <?php } else { ?>
-                  <span class="price">Rp. <?php echo htmlentities($result->PricePerDay);?> /Hari</span>
+                  <span class="price">Rp. <?php echo htmlentities(number_format($result->PricePerDay, 0, ",", "."));?> /Hari</span>
             <?php  } 
               }
             ?>
