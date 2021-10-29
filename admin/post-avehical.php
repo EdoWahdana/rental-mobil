@@ -195,8 +195,10 @@ foreach($results as $result)
 <div class="col-sm-4">
 <select class="selectpicker" name="fueltype" required>
 <option value=""> Select </option>
-<option value="Bensin">Bensin</option>
+<option value="Pertamax">Pertamax</option>
+<option value="Pertalite">Pertalite</option>
 <option value="Solar">Solar</option>
+<option value="Pertamina Dex">Pertamina Dex</option>
 </select>
 </div>
 </div>

@@ -166,13 +166,13 @@ foreach($results as $result)
               <label class="control-label">Alamat Email</label>
               <input class="form-control white_bg" value="<?php echo htmlentities($result->EmailId);?>" name="emailid" id="email" type="email" required readonly>
             </div>
+			<div class="form-group">
+              <label class="control-label">NIK</label>
+              <input class="form-control white_bg" value="<?php echo htmlentities($result->nik);?>" name="nik" id="nik" type="text" required readonly>
+            </div>
             <div class="form-group">
               <label class="control-label">Nomor Handphone</label>
               <input class="form-control white_bg" name="mobilenumber" value="<?php echo htmlentities($result->ContactNo);?>" id="phone-number" type="text" required>
-            </div>
-            <div class="form-group">
-              <label class="control-label">Tanggal Lahir&nbsp;(dd/mm/yyyy)</label>
-              <input class="form-control white_bg" value="<?php echo htmlentities($result->dob);?>" name="dob" placeholder="dd/mm/yyyy" id="birth-date" type="text" >
             </div>
             <div class="form-group">
               <label class="control-label">Alamat</label>

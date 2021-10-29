@@ -118,7 +118,7 @@ foreach($results as $result)
                   <p class="price">Rp. <?php echo htmlentities(number_format($result->PricePerDay - floor($result->PricePerDay * $result->Discount / 100),0 , ',', '.'));?> /Hari</p>
             <?php } else { ?>
                   <p class="price">Rp. <?php echo htmlentities(number_format($result->PricePerDay, 0, ",", "."));?> /Hari</p>
-            <?php  } 
+            <?php  }  ?>
             <ul>
               <li><i class="fa fa-user" aria-hidden="true"></i><?php echo htmlentities($result->SeatingCapacity);?> seats</li>
               <li><i class="fa fa-calendar" aria-hidden="true"></i><?php echo htmlentities($result->ModelYear);?> model</li>
@@ -137,9 +137,9 @@ foreach($results as $result)
             <h5><i class="fa fa-filter" aria-hidden="true"></i> Find Your  Car </h5>
           </div>
           <div class="sidebar_filter">
-            <form action="#" method="get">
+            <form action="#" method="post">
               <div class="form-group select">
-                <select class="form-control">
+                <select class="form-control" name="brand">
                   <option>Select Brand</option>
 
                   <?php $sql = "SELECT * from  tblbrands ";
@@ -157,10 +157,10 @@ foreach($results as $result)
                 </select>
               </div>
               <div class="form-group select">
-                <select class="form-control">
+                <select class="form-control" name="fueltype">
                   <option>Select Fuel Type</option>
-<option value="Petrol">Petrol</option>
-<option value="Diesel">Diesel</option>
+<option value="Bensin">bensin</option>
+<option value="Solar">solar</option>
 <option value="CNG">CNG</option>
                 </select>
               </div>

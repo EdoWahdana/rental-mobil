@@ -17,7 +17,7 @@
 			</li>
 			<li><a href="manage-bookings.php"><i class="fa fa-users"></i> Manage Pesanan</a></li>
 			<li><a href="reg-users.php"><i class="fa fa-users"></i> Daftar Pengguna</a></li>
-			<!-- <li><a href="testimonials.php"><i class="fa fa-table"></i> Manage Testimoni</a></li> -->
+			<li><a href="testimonials.php"><i class="fa fa-table"></i> Manage Testimoni</a></li>
 			<!-- <li><a href="manage-conactusquery.php"><i class="fa fa-desktop""></i> Manage Query</a></li>
 			<li><a href="manage-pages.php"><i class="fa fa-files-o"></i> Manage Pages</a></li>
 			<li><a href="update-contactinfo.php"><i class="fa fa-files-o"></i> Update Contact Info</a></li>

@@ -3,25 +3,27 @@
 if(isset($_POST['signup']))
 {
 $fname=$_POST['fullname'];
+$nik=$_POST['nik'];
 $email=$_POST['emailid']; 
 $mobile=$_POST['mobileno'];
 $password=md5($_POST['password']); 
-$sql="INSERT INTO  tblusers(FullName,EmailId,ContactNo,Password) VALUES(:fname,:email,:mobile,:password)";
+$sql="INSERT INTO  tblusers(FullName,EmailId,nik,ContactNo,Password) VALUES(:fname,:email,:nik,:mobile,:password)";
 $query = $dbh->prepare($sql);
 $query->bindParam(':fname',$fname,PDO::PARAM_STR);
 $query->bindParam(':email',$email,PDO::PARAM_STR);
+$query->bindParam(':nik',$nik,PDO::PARAM_STR);
 $query->bindParam(':mobile',$mobile,PDO::PARAM_STR);
 $query->bindParam(':password',$password,PDO::PARAM_STR);
 $query->execute();
 $lastInsertId = $dbh->lastInsertId();
 if($lastInsertId)
 {
-echo "<script>alert('Registration successfull. Now you can login');</script>";
+echo "<script>alert('Registrasi Berhasil. Silahkan login');</script>";
 header('Location: ../index.php');
 }
 else 
 {
-echo "<script>alert('Something went wrong. Please try again');</script>";
+echo "<script>alert('Terjadi Kesalahan. Silahkan ulangi');</script>";
 }
 }
 
@@ -69,6 +71,9 @@ return true;
               <form  method="post" name="signup" onSubmit="return valid();">
                 <div class="form-group">
                   <input type="text" class="form-control" name="fullname" placeholder="Full Name" required="required">
+                </div>
+				<div class="form-group">
+                  <input type="text" class="form-control" name="nik" placeholder="NIK" required="required">
                 </div>
                       <div class="form-group">
                   <input type="text" class="form-control" name="mobileno" placeholder="Mobile Number" maxlength="15" required="required">
