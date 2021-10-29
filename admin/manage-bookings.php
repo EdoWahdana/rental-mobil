@@ -119,7 +119,7 @@ $msg="Pesanan Telah Berhasil Dikonfirmasi";
 											<th>Ke Tanggal</th>
 											<th>Pesan</th>
 											<th>Status</th>
-											<th>Tanggal Posting</th>
+											<th>Tanggal Pesan</th>
 											<th>Total</th>
 											<th>Bukti</th>
 											<th>Aksi</th>
@@ -134,7 +134,7 @@ $msg="Pesanan Telah Berhasil Dikonfirmasi";
 											<th>Ke Tanggal</th>
 											<th>Pesan</th>
 											<th>Status</th>
-											<th>Tanggal Posting</th>
+											<th>Tanggal Pesan</th>
 											<th>Total</th>
 											<th>Bukti</th>
 											<th>Aksi</th>

@@ -6,6 +6,7 @@ if(isset($_POST['submit']))
 {
 $fromdate=$_POST['fromdate'];
 $todate=$_POST['todate']; 
+$jam=$_POST['jam']; 
 $message=$_POST['message'];
 $price = intval($_POST['price']);
 $useremail=$_SESSION['login'];
@@ -13,13 +14,14 @@ $user_id = $_SESSION['id_user'];
 $status=0;
 $vhid=$_GET['vhid'];
 $total = intval($price * round((strtotime($todate) - strtotime($fromdate)) / (60 * 60 * 24)));
-$sql="INSERT INTO tblbooking(id_user, userEmail,VehicleId,FromDate,ToDate,message,Status, TotalPay) VALUES(:id_user, :useremail,:vhid,:fromdate,:todate,:message,:status, :total)";
+$sql="INSERT INTO tblbooking(id_user, userEmail,VehicleId,FromDate,ToDate,jam,message,Status, TotalPay) VALUES(:id_user, :useremail,:vhid,:fromdate,:todate,:jam,:message,:status, :total)";
 $query = $dbh->prepare($sql);
 $query->bindParam(':id_user',$user_id,PDO::PARAM_STR);
 $query->bindParam(':useremail',$useremail,PDO::PARAM_STR);
 $query->bindParam(':vhid',$vhid,PDO::PARAM_STR);
 $query->bindParam(':fromdate',$fromdate,PDO::PARAM_STR);
 $query->bindParam(':todate',$todate,PDO::PARAM_STR);
+$query->bindParam(':jam',$jam,PDO::PARAM_STR);
 $query->bindParam(':message',$message,PDO::PARAM_STR);
 $query->bindParam(':status',$status,PDO::PARAM_STR);
 $query->bindParam(':total',$total,PDO::PARAM_STR);
@@ -367,6 +369,17 @@ $_SESSION['brndid']=$result->bid;
             </div>
             <div class="form-group">
               <input class="form-control" name="todate" id="todate" placeholder="Tanggal kembali" required>
+            </div>
+			<div class="form-group">
+              <select class="form-control" name="jam" id="jam" placeholder="Jam Pinjam & Kembali" required>
+				<option selected disable>Jam Pinjam & Kembali</option>
+				<?php for($i = 1; $i < 25; $i++) {
+					if($i < 10)
+						echo "<option value='0".$i."'>0".$i.":00 WIB</option>";
+					else
+						echo "<option value='".$i."'>".$i.":00 WIB</option>";
+				} ?>
+			  </select>
             </div>
             <div class="form-group">
               <textarea rows="4" class="form-control" name="message" placeholder="Pesan" required></textarea>

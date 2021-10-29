@@ -42,7 +42,7 @@ include('includes/indonesian_date.php');
 <?php include('includes/header.php');?>
 <?php
     $id_order=$_GET['order'];
-    $sql = "SELECT tblvehicles.VehiclesTitle, tblvehicles.PricePerDay, tblvehicles.Vimage1, tblbooking.VehicleId, tblbooking.FromDate, tblbooking.ToDate, tblbooking.message, tblbooking.Status, tblbooking.TotalPay, tblbooking.Payment FROM tblbooking JOIN tblvehicles ON tblbooking.VehicleId = tblvehicles.id WHERE tblbooking.id=:orderid";
+    $sql = "SELECT tblvehicles.VehiclesTitle, tblvehicles.PricePerDay, tblvehicles.Vimage1, tblbooking.VehicleId, tblbooking.FromDate, tblbooking.ToDate, tblbooking.jam, tblbooking.message, tblbooking.Status, tblbooking.TotalPay, tblbooking.Payment FROM tblbooking JOIN tblvehicles ON tblbooking.VehicleId = tblvehicles.id WHERE tblbooking.id=:orderid";
     $query = $dbh->prepare($sql);
     $query->bindParam(':orderid',$id_order,PDO::PARAM_STR);
     $query->execute();
@@ -132,7 +132,7 @@ if(isset($_POST['cancel'])) {
                   <sup><del><span>Rp. <?php echo htmlentities($result->PricePerDay);?> /Hari</span></del></sup>
                   <span class="price">Rp. <?php echo htmlentities(number_format($result->PricePerDay - floor($result->PricePerDay * $result->Discount / 100),0 , ',', '.'));?> /Hari</span>
             <?php } else { ?>
-                  <span class="price">Rp. <?php echo htmlentities(number_format($result->PricePerDay, 0, ",", "."));?> /Hari</span>
+                  <h6 class="price">Rp. <?php echo htmlentities(number_format($result->PricePerDay, 0, ",", "."));?> /Hari</h6>
             <?php  } 
                 }
               ?>
@@ -144,6 +144,10 @@ if(isset($_POST['cancel'])) {
             <div class="form-group">
               <label class="control-label">Tanggal Kembali</label>
               <h6><?= indonesian_date($result->ToDate) ?> </h6>
+            </div>
+			<div class="form-group">
+              <label class="control-label">Jam Sewa & Kembali</label>
+              <h6><?= $result->jam ?>:00 WIB</h6>
             </div>
             <div class="form-group">
               <label class="control-label">Pesan</label>
