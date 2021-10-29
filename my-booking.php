@@ -118,7 +118,7 @@ foreach($results as $result)
             <ul class="vehicle_listing">
 <?php 
 $useremail=$_SESSION['login'];
- $sql = "SELECT tblvehicles.Vimage1 as Vimage1,tblvehicles.VehiclesTitle,tblvehicles.id as vid,tblbrands.BrandName, tblbooking.id as bid, tblbooking.FromDate,tblbooking.ToDate,tblbooking.message,tblbooking.Status, tblbooking.Payment from tblbooking join tblvehicles on tblbooking.VehicleId=tblvehicles.id join tblbrands on tblbrands.id=tblvehicles.VehiclesBrand where tblbooking.userEmail=:useremail";
+ $sql = "SELECT tblvehicles.Vimage1 as Vimage1,tblvehicles.VehiclesTitle,tblvehicles.id as vid,tblbrands.BrandName, tblbooking.id as bid, tblbooking.FromDate,tblbooking.ToDate,tblbooking.jam,tblbooking.message,tblbooking.Status, tblbooking.Payment from tblbooking join tblvehicles on tblbooking.VehicleId=tblvehicles.id join tblbrands on tblbrands.id=tblvehicles.VehiclesBrand where tblbooking.userEmail=:useremail";
 $query = $dbh -> prepare($sql);
 $query-> bindParam(':useremail', $useremail, PDO::PARAM_STR);
 $query->execute();
@@ -133,7 +133,11 @@ foreach($results as $result)
                 <div class="vehicle_img"> <a href="status.php?order=<?php echo htmlentities($result->bid);?>""><img src="admin/img/vehicleimages/<?php echo htmlentities($result->Vimage1);?>" alt="image"></a> </div>
                 <div class="vehicle_title">
                   <h6><a href="status.php?order=<?php echo htmlentities($result->bid);?>"> <?php echo htmlentities($result->BrandName);?> , <?php echo htmlentities($result->VehiclesTitle);?></a></h6>
-                  <p><b>Dari Tanggal:</b> <?php echo htmlentities($result->FromDate);?><br /> <b>Ke Tanggal:</b> <?php echo htmlentities($result->ToDate);?></p>
+                  <p>
+				    <b>Dari Tanggal:</b> <?php echo htmlentities($result->FromDate);?> <br /> 
+					<b>Ke Tanggal:</b> <?php echo htmlentities($result->ToDate);?> <br />
+					<b>Jam:</b> <?php echo htmlentities($result->jam);?>:00 WIB
+				  </p>
                 </div>
                 <?php if($result->Status==1) { ?>
                   <div class="vehicle_status"> <btn class="btn outline btn-xs active-btn">Selesai</button>
