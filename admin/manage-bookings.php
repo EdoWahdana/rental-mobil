@@ -28,7 +28,7 @@ if(isset($_REQUEST['aeid']))
 $aeid=intval($_GET['aeid']);
 $status=1;
 
-$sql = "UPDATE tblbooking SET Status=:status WHERE  id=:aeid";
+$sql = "UPDATE tblbooking SET Status=:status WHERE id=:aeid";
 $query = $dbh->prepare($sql);
 $query -> bindParam(':status',$status, PDO::PARAM_STR);
 $query-> bindParam(':aeid',$aeid, PDO::PARAM_STR);
@@ -117,6 +117,7 @@ $msg="Pesanan Telah Berhasil Dikonfirmasi";
 											<th>Mobil</th>
 											<th>Dari Tanggal</th>
 											<th>Ke Tanggal</th>
+											<th>Jam Sewa & Kembali</th>
 											<th>Pesan</th>
 											<th>Status</th>
 											<th>Tanggal Pesan</th>
@@ -131,6 +132,7 @@ $msg="Pesanan Telah Berhasil Dikonfirmasi";
 										<th>Nama</th>
 											<th>Mobil</th>
 											<th>Dari Tanggal</th>
+											<th>Jam Sewa & Kembali</th>
 											<th>Ke Tanggal</th>
 											<th>Pesan</th>
 											<th>Status</th>
@@ -142,7 +144,7 @@ $msg="Pesanan Telah Berhasil Dikonfirmasi";
 									</tfoot>
 									<tbody>
 
-									<?php $sql = "SELECT tblusers.FullName, tblbrands.BrandName, tblvehicles.VehiclesTitle, tblbooking.FromDate, tblbooking.ToDate, tblbooking.message, tblbooking.VehicleId as vid, tblbooking.Status, tblbooking.PostingDate, tblbooking.id as bid, tblbooking.TotalPay, tblbooking.Payment from tblbooking join tblvehicles on tblvehicles.id=tblbooking.VehicleId join tblusers on tblusers.EmailId=tblbooking.userEmail join tblbrands on tblvehicles.VehiclesBrand=tblbrands.id;";
+									<?php $sql = "SELECT tblusers.FullName, tblbrands.BrandName, tblvehicles.VehiclesTitle, tblbooking.FromDate, tblbooking.ToDate, tblbooking.jam, tblbooking.message, tblbooking.VehicleId as vid, tblbooking.Status, tblbooking.PostingDate, tblbooking.id as bid, tblbooking.TotalPay, tblbooking.Payment from tblbooking join tblvehicles on tblvehicles.id=tblbooking.VehicleId join tblusers on tblusers.EmailId=tblbooking.userEmail join tblbrands on tblvehicles.VehiclesBrand=tblbrands.id;";
 $query = $dbh -> prepare($sql);
 $query->execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);
@@ -157,6 +159,7 @@ foreach($results as $result)
 											<td><a href="edit-vehicle.php?id=<?php echo htmlentities($result->vid);?>"><?php echo htmlentities($result->BrandName);?> , <?php echo htmlentities($result->VehiclesTitle);?></td>
 											<td><?php echo htmlentities(indonesian_date($result->FromDate));?></td>
 											<td><?php echo htmlentities(indonesian_date($result->ToDate));?></td>
+											<td><?php echo htmlentities($result->jam);?>:00 WIB</td>
 											<td><?php echo htmlentities($result->message);?></td>
 											<td><?php 
 if($result->Status==0)
