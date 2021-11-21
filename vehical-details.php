@@ -371,15 +371,7 @@ $_SESSION['brndid']=$result->bid;
               <input class="form-control" name="todate" id="todate" placeholder="Tanggal kembali" required>
             </div>
 			<div class="form-group">
-              <select class="form-control" name="jam" id="jam" placeholder="Jam Pinjam & Kembali" required>
-				<option selected disable>Jam Pinjam & Kembali</option>
-				<?php for($i = 1; $i < 25; $i++) {
-					if($i < 10)
-						echo "<option value='0".$i."'>0".$i.":00 WIB</option>";
-					else
-						echo "<option value='".$i."'>".$i.":00 WIB</option>";
-				} ?>
-			  </select>
+				<input class="form-control" type="time" name="jam" id="jam" placeholder="Jam sewa & kembali" required>
             </div>
             <div class="form-group">
               <textarea rows="4" class="form-control" name="message" placeholder="Pesan" required></textarea>
@@ -491,6 +483,11 @@ foreach($results as $result)
           });
       }
     });
+	
+	$('#jam').keyup(function() {
+		if($(this).val().length == 2)
+			$(this).val($(this).val() + ':');
+	});
 });
 </script>
 </body>

@@ -95,22 +95,23 @@ $msg="Page data updated  successfully";
 									<thead>
 										<tr>
 										<th>#</th>
-												<th> Nama</th>
-											<th>Email </th>
-											<th>No. HP</th>
+										<th> Nama</th>
+										<th> NIK</th>
+										<th>Email </th>
+										<th>No. HP</th>
 										<th>Alamat</th>
 										<th>Kota</th>
 										<th>Negara</th>
-										<th>Tanggal Daftar</th>
-										
+										<th>Tanggal Daftar</th>										
 										</tr>
 									</thead>
 									<tfoot>
 										<tr>
 										<th>#</th>
-											<th> Nama</th>
-											<th>Email </th>
-											<th>No. HP</th>
+										<th> Nama</th>
+										<th> NIK</th>
+										<th>Email </th>
+										<th>No. HP</th>
 										<th>Alamat</th>
 										<th>Kota</th>
 										<th>Negara</th>
@@ -132,6 +133,7 @@ foreach($results as $result)
 										<tr>
 											<td><?php echo htmlentities($cnt);?></td>
 											<td><?php echo htmlentities($result->FullName);?></td>
+											<td><?php echo htmlentities($result->nik);?></td>
 											<td><?php echo htmlentities($result->EmailId);?></td>
 											<td><?php echo htmlentities($result->ContactNo);?></td>
 											<td><?php echo htmlentities($result->Address);?></td>

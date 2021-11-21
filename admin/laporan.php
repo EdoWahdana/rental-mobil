@@ -140,7 +140,7 @@ return true;
 											
 											<div class="form-group">
 												<div class="col-sm-8 col-sm-offset-4">
-													<button class="btn btn-primary" name="submit" type="submit">Cetak Laporan</button>
+													<button class="btn btn-primary" name="submit" type="submit">Cetak Laporan Excel  <i class="fa fa-file-excel-o"></i></button>
 												</div>
 											</div>
 
@@ -151,9 +151,6 @@ return true;
 							</div>
 							
 						</div>
-						
-					
-
 					</div>
 				</div>
 				
