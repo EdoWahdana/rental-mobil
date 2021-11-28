@@ -26,7 +26,7 @@ $msg="Pesanan Telah Dibatalkan";
 if(isset($_REQUEST['aeid']))
 	{
 $aeid=intval($_GET['aeid']);
-$status=1;
+$status=3;
 
 $sql = "UPDATE tblbooking SET Status=:status WHERE id=:aeid";
 $query = $dbh->prepare($sql);

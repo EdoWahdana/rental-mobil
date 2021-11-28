@@ -7,6 +7,18 @@ if(strlen($_SESSION['login'])==0)
 header('location:index.php');
 }
 else{
+  if(isset($_REQUEST['eid']))
+	{
+$eid=intval($_GET['eid']);
+$status=1;
+$sql = "UPDATE tblbooking SET Status=:status WHERE  id=:eid";
+$query = $dbh->prepare($sql);
+$query -> bindParam(':status',$status, PDO::PARAM_STR);
+$query-> bindParam(':eid',$eid, PDO::PARAM_STR);
+$query -> execute();
+
+$msg="Mobil berhasil dikembalikan";
+}
 ?><!DOCTYPE HTML>
 <html lang="en">
 <head>
@@ -146,6 +158,11 @@ foreach($results as $result)
 
                 <?php } else if($result->Status==2) { ?>
                   <div class="vehicle_status"> <btn class="btn outline btn-xs">Dibatalkan</button>
+                    <div class="clearfix"></div>
+                  </div>
+
+                <?php } else if($result->Status=3) { ?>
+                  <div class="vehicle_status"> <a href="my-booking.php?eid=<?php echo htmlentities($result->bid);?>" class="btn outline btn-xs">Kembalikan</a>
                     <div class="clearfix"></div>
                   </div>
                 
